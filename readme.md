@@ -19,8 +19,8 @@ A carefully curated collection of the best Discord theme components, optimized f
 
 1. Go to Vencord Settings > Themes
 2. Click on "Online Themes"
-3. Add this repository URL: `https://mahirox36.github.io/MahiNight/build/MahiNight.css`
-4. Click on "Install"
+3. Add this URL: `https://mahirox36.github.io/MahiNight/build/MahiNight.css`
+4. Now it should work!
 
 ### Manual Installation
 
