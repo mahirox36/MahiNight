@@ -350,40 +350,6 @@ form>div.focusLock__49fc1>div.rootWithShadow__49fc1 {
     }
 }
 
-/* Text Box Redesign */
-[class^="channelTextArea_"] [class^="inner_"] {
-    flex-direction: column;
-    position: relative;
-}
-
-[class^="channelTextArea_"] [class^="inner_"] [class^="separator_"] {
-    margin-left: auto;
-}
-
-[class^="attachWrapper_"] {
-    position: absolute;
-    left: 19px;
-    bottom: 39px;
-    z-index: 1;
-}
-
-/* Make room for the attachment button */
-[class^="textArea_"] {
-    margin-bottom: -7.4px;
-    margin-right: 10;
-}
-
-.slateTextArea_ec4baf {
-    margin-left: 30px !important;
-}
-
-
-/* Adjust buttons position */
-[class^="buttons_"] {
-    position: relative;
-    z-index: 1;
-}
-
 /*     Modernized audio attachments      */
 [class^="mosaicItem"]>[class^="wrapperAudio"]>[class^="audioMetadata"] {
     margin-bottom: 24px;
