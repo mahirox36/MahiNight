@@ -1,0 +1,558 @@
+/**
+ * Enhanced Midnight Discord Theme (Vencord Edition)
+ * A carefully curated collection of the best Discord theme components
+ * Author: Mahiro
+ * Version: 1.0
+ */
+
+/* ========== Core Components ========== */
+/* Base Theme */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://refact0r.github.io/midnight-discord/build/midnight.css');
+/* Added display=swap for better loading */
+
+/* Backdrop Effect */
+@import url("https://nspc911.github.io/themes/vencord/BlurryBackdrop.theme.css") layer(backdrop);
+
+/* ========== Optional Components ========== */
+/* 1. Emoji Replacement */
+@import url(https://mwittrien.github.io/BetterDiscordAddons/Themes/EmojiReplace/base/Apple.css) layer(emojis);
+
+/* 2. Settings Icons */
+@import url("https://gold-me.github.io/DiscordIcons/main.css") layer(icons);
+
+/* 3. Enhanced Folders */
+@import url("https://warrayquipsome.github.io/Chillax/Addons/FolderRedesign.css") layer(folders);
+
+/* 4. Icon Pack */
+@import url("https://warrayquipsome.github.io/Chillax/Addons/IconPackEdited.css") layer(iconpack);
+
+/* ========== Midnight Theme Vencord ========== */
+body {
+    /* font, change to '' for default discord font */
+    --font: 'figtree';
+    font-weight: 400 /* normal text font weight. DOES NOT AFFECT BOLD TEXT */;
+
+    /* sizes */
+    --gap: 12px; /* spacing between panels */
+    --divider-thickness: 4px; /* thickness of unread messages divider and highlighted message borders */
+    --border-thickness: 1px; /* thickness of borders around main panels. DOES NOT AFFECT OTHER BORDERS */
+
+    /* animation/transition options */
+    --animations: on; /* off: disable animations/transitions, on: enable animations/transitions */
+    --list-item-transition: 0.2s ease; /* transition for list items */
+    --dms-icon-svg-transition: 0.4s ease; /* transition for the dms icon */
+
+    /* top bar options */
+    --top-bar-height: 32px; /* height of the titlebar/top bar (discord default is 36px, 24px recommended if moving/hiding top bar buttons) */
+    --top-bar-button-position: titlebar; /* off: default position, hide: hide inbox/support buttons completely, serverlist: move inbox button to server list, titlebar: move inbox button to titlebar (will hide title) */
+    --top-bar-title-position: off; /* off: default centered position, hide: hide title completely, left: left align title (like old discord) */
+    --subtle-top-bar-title: off; /* off: default, on: hide the icon and use subtle text color (like old discord) */
+
+    /* window controls */
+    --custom-window-controls: on; /* off: default window controls, on: custom window controls */
+    --window-control-size: 14px; /* size of custom window controls */
+
+    /* dms button options */
+    --custom-dms-icon: custom; /* off: use default discord icon, hide: remove icon entirely, custom: use custom icon */
+    --dms-icon-svg-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 27' width='24' height='24'%3E%3Cpath fill='currentColor' d='M0 0h7v1H6v1H5v1H4v1H3v1H2v1h5v1H0V6h1V5h1V4h1V3h1V2h1V1H0m13 2h5v1h-1v1h-1v1h-1v1h3v1h-5V7h1V6h1V5h1V4h-3m8 5h1v5h1v-1h1v1h-1v1h1v-1h1v1h-1v3h-1v1h-2v1h-1v1h1v-1h2v-1h1v2h-1v1h-2v1h-1v-1h-1v1h-6v-1h-1v-1h-1v-2h1v1h2v1h3v1h1v-1h-1v-1h-3v-1h-4v-4h1v-2h1v-1h1v-1h1v2h1v1h1v-1h1v1h-1v1h2v-2h1v-2h1v-1h1M8 14h2v1H9v4h1v2h1v1h1v1h1v1h4v1h-6v-1H5v-1H4v-5h1v-1h1v-2h2m17 3h1v3h-1v1h-1v1h-1v2h-2v-2h2v-1h1v-1h1m1 0h1v3h-1v1h-2v-1h1v-1h1'%3E%3C/path%3E%3C/svg%3E"); /* icon svg url. MUST BE A SVG. */
+    --dms-icon-svg-size: 100%; /* size of the svg (css mask-size property) */
+    --dms-icon-color-before: var(--icon-secondary); /* normal icon color */
+    --dms-icon-color-after: var(--white); /* icon color when button is hovered/selected */
+    --custom-dms-background: off; /* off to disable, image to use a background image (must set url variable below), color to use a custom color/gradient */
+    --dms-background-image-url: url(''); /* url of the background image */
+    --dms-background-image-size: cover; /* size of the background image (css background-size property) */
+    --dms-background-color: linear-gradient(70deg, var(--blue-2), var(--purple-2), var(--red-2)); /* fixed color/gradient (css background property) */
+
+    /* background image options */
+    --background-image: off; /* off: no background image, on: enable background image (must set url variable below) */
+    --background-image-url: url(''); /* url of the background image */
+
+    /* transparency/blur options */
+    /* NOTE: TO USE TRANSPARENCY/BLUR, YOU MUST HAVE TRANSPARENT BG COLORS. FOR EXAMPLE: --bg-4: hsla(220, 15%, 10%, 0.7); */
+    --transparency-tweaks: off; /* off: no changes, on: remove some elements for better transparency */
+    --remove-bg-layer: off; /* off: no changes, on: remove the base --bg-3 layer for use with window transparency (WILL OVERRIDE BACKGROUND IMAGE) */
+    --panel-blur: off; /* off: no changes, on: blur the background of panels */
+    --blur-amount: 12px; /* amount of blur */
+    --bg-floating: var(--bg-3); /* set this to a more opaque color if floating panels look too transparent. only applies if panel blur is on  */
+
+    /* chatbar options */
+    --custom-chatbar: aligned; /* off: default chatbar, aligned: chatbar aligned with the user panel, separated: chatbar separated from chat */
+    --chatbar-height: 47px; /* height of the chatbar (52px by default, 47px recommended for aligned, 56px recommended for separated) */
+    --chatbar-padding: 8px; /* padding of the chatbar. only applies in aligned mode. */
+
+    /* other options */
+    --small-user-panel: on; /* off: default user panel, on: smaller user panel like in old discord */
+}
+
+/* color options */
+:root {
+    --colors: on; /* off: discord default colors, on: midnight custom colors */
+
+    /* text colors */
+    --text-0: var(--bg-4); /* text on colored elements */
+    --text-1: hsl(38, 47%, 90%); /* bright text on colored elements */
+    --text-2: hsl(38, 47%, 80%); /* headings and important text */
+    --text-3: #d4be98; /* normal text */
+    --text-4: #a79a83; /* icon buttons and channels */
+    --text-5: #d4be9866; /* muted channels/chats and timestamps */
+
+    /* background and dark colors */
+    --bg-1: hsl(20, 5%, 25%); /* dark buttons when clicked */
+    --bg-2: #3c3836; /* dark buttons */
+    --bg-3: hsl(20, 2%, 19%); /* spacing, secondary elements */
+    --bg-4: #282828; /* main background color */
+    --hover: hsla(20, 3%, 40%, 0.1); /* channels and buttons when hovered */
+    --active: hsla(20, 3%, 40%, 0.2); /* channels and buttons when clicked or selected */
+    --active-2: hsla(20, 3%, 40%, 0.3); /* extra state for transparent buttons */
+    --message-hover: hsla(0, 0%, 0%, 0.1); /* messages when hovered */
+
+    /* accent colors */
+    --accent-1: var(--purple-1); /* links and other accent text */
+    --accent-2: var(--purple-2); /* small accent elements */
+    --accent-3: var(--purple-3); /* accent buttons */
+    --accent-4: var(--purple-4); /* accent buttons when hovered */
+    --accent-5: var(--purple-5); /* accent buttons when clicked */
+    --accent-new: var(--accent-2); /* stuff that's normally red like mute/deafen buttons */
+    --mention: linear-gradient(to right, color-mix(in hsl, var(--accent-2), transparent 90%) 40%, transparent); /* background of messages that mention you */
+    --mention-hover: linear-gradient(to right, color-mix(in hsl, var(--accent-2), transparent 95%) 40%, transparent); /* background of messages that mention you when hovered */
+    --reply: linear-gradient(to right, color-mix(in hsl, var(--text-3), transparent 90%) 40%, transparent); /* background of messages that reply to you */
+    --reply-hover: linear-gradient(to right, color-mix(in hsl, var(--text-3), transparent 95%) 40%, transparent); /* background of messages that reply to you when hovered */
+
+    /* status indicator colors */
+    --online: var(--green-2); /* change to #43a25a for default */
+    --dnd: var(--red-2); /* change to #d83a42 for default */
+    --idle: var(--yellow-2); /* change to #ca9654 for default */
+    --streaming: var(--purple-2); /* change to #593695 for default */
+    --offline: var(--text-4); /* change to #83838b for default offline color */
+
+    /* border colors */
+    --border-light: var(--hover); /* light border color */
+    --border: var(--active); /* normal border color */
+    --button-border: hsl(0, 0%, 100%, 0.1); /* neutral border color of buttons */
+
+    /* base colors */
+    --red-1: hsl(3, 76%, 70%);
+    --red-2: #ea6962;
+    --red-3: #ea6962;
+    --red-4: hsl(3, 76%, 60%);
+    --red-5: hsl(3, 76%, 55%);
+
+    --green-1: hsl(70, 36%, 60%);
+    --green-2: #a8b665;
+    --green-3: #a8b665;
+    --green-4: hsl(70, 36%, 50%);
+    --green-5: hsl(70, 36%, 45%);
+
+    --blue-1: hsl(167, 24%, 63%);
+    --blue-2: #7caea3;
+    --blue-3: #7caea3;
+    --blue-4: hsl(167, 24%, 53%);
+    --blue-5: hsl(167, 24%, 48%);
+
+    --yellow-1: hsl(37, 63%, 64%);
+    --yellow-2: #d8a656;
+    --yellow-3: #d8a656;
+    --yellow-4: hsl(37, 63%, 54%);
+    --yellow-5: hsl(37, 63%, 49%);
+
+    --purple-1: hsl(344, 47%, 73%);
+    --purple-2: #d3869b;
+    --purple-3: #d3869b;
+    --purple-4: hsl(344, 47%, 63%);
+    --purple-5: hsl(344, 47%, 58%);
+}   
+
+
+/* ========== Performance Optimizations ========== */
+/* Reduce repaints and optimize animations */
+.app-2rEoOp {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Optimize blur effects */
+.quickswitcher_ac6cb0,
+.backdrop__1a911,
+[class^="buttons_"] {
+    backdrop-filter: blur(var(--blrbg-blur-by));
+    transform: translateZ(0);
+}
+
+/* ========== Custom Components ========== */
+/* Shiggy Loading Animation */
+.content_a2f514 {
+    display: flex;
+    flex-direction: column;
+
+    >.spinner_a2f514 {
+        display: none
+    }
+
+    &:before {
+        display: block;
+        height: 128px;
+        position: relative;
+        content: url(https://raw.githubusercontent.com/Vencord/Vesktop/refs/heads/main/static/shiggy.gif);
+        image-rendering: pixelated;
+        align-content: center;
+        scale: 3.125;
+        margin-bottom: 96px;
+    }
+}
+
+
+
+/* Enhanced Quick Switcher (Ctrl + K) */
+.quickswitcher_ac6cb0 {
+    background: 0 0 !important;
+    padding: 10px;
+    background-color: transparent !important;
+    backdrop-filter: blur(20px);
+
+    >* {
+        background: inherit !important;
+        background-color: inherit !important;
+    }
+
+    .scroller_ac6cb0 {
+        margin: 0;
+        border-radius: 0 0 8px 8px;
+        scrollbar-width: none;
+        padding: 4px !important;
+    }
+
+    .input_ac6cb0 {
+        height: 50px
+    }
+
+    .input_ac6cb0[value=""] {
+        border-radius: 8px
+    }
+
+    .input_ac6cb0:not([value=""]) {
+        border-radius: 8px 8px 0 0
+    }
+
+    .protip_ac6cb0 {
+        display: none
+    }
+
+    .result__71961 {
+        border-radius: 8px
+    }
+
+    .content__99f8c>div:not(.result__71961):not([aria-hidden=true])>.content__71961 {
+        height: 20px;
+        line-height: 20px;
+
+        >.header__71961 {
+            line-height: 20px;
+            margin-top: 0;
+            margin-bottom: 4px;
+        }
+    }
+}
+
+.backdrop__1a911:has(+ .layer_bc663c .quickswitcher_ac6cb0) {
+    opacity: 0
+}
+
+/* Read All Button */
+.vc-ranb-button {
+    margin: 0 16px;
+    display: flex;
+    position: relative;
+    width: var(--guildbar-avatar-size);
+    height: var(--guildbar-avatar-size);
+    min-height: 40px;
+    max-height: 40px !important;
+    max-width: 40px !important;
+    padding: 2px;
+    background-color: var(--background-surface-higher);
+    transition: background-color 0.15s ease-out;
+    border: none;
+    border-radius: 12px;
+
+    .contents__201d5 {
+        font-size: 0px;
+    }
+
+    .contents__201d5::after {
+        content: "asdfg";
+        font-size: 20px;
+        width: 16px;
+        height: 16px;
+        position: relative;
+        color: transparent;
+        top: 4px;
+        left: 13.35px;
+        background-image: url("data:image/svg+xml,%3Csvg%20x%3D%220%22%20y%3D%220%22%20class%3D%22icon__9293f%22%20aria-hidden%3D%22true%22%20role%3D%22img%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%23D8D8DB%22%20d%3D%22M9.7%202.89c.18-.07.32-.24.37-.43a2%202%200%200%201%203.86%200c.05.2.19.36.38.43A7%207%200%200%201%2019%209.5v2.09c0%20.12.05.24.13.33l1.1%201.22a3%203%200%200%201%20.77%202.01v.28c0%20.67-.34%201.29-.95%201.56-1.31.6-4%201.51-8.05%201.51-4.05%200-6.74-.91-8.05-1.5-.61-.28-.95-.9-.95-1.57v-.28a3%203%200%200%201%20.77-2l1.1-1.23a.5.5%200%200%200%20.13-.33V9.5a7%207%200%200%201%204.7-6.61ZM9.18%2019.84A.16.16%200%200%200%209%2020a3%203%200%201%200%206%200c0-.1-.09-.17-.18-.16a24.86%2024.86%200%200%201-5.64%200Z%22%20class%3D%22%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E");
+        background-repeat: no-repeat;
+    }
+
+    &:hover {
+        background-color: var(--brand-500);
+
+        .contents__201d5::after {
+            background-image: url("data:image/svg+xml,%3Csvg%20x%3D%220%22%20y%3D%220%22%20class%3D%22icon__9293f%22%20aria-hidden%3D%22true%22%20role%3D%22img%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M9.7%202.89c.18-.07.32-.24.37-.43a2%202%200%200%201%203.86%200c.05.2.19.36.38.43A7%207%200%200%201%2019%209.5v2.09c0%20.12.05.24.13.33l1.1%201.22a3%203%200%200%201%20.77%202.01v.28c0%20.67-.34%201.29-.95%201.56-1.31.6-4%201.51-8.05%201.51-4.05%200-6.74-.91-8.05-1.5-.61-.28-.95-.9-.95-1.57v-.28a3%203%200%200%201%20.77-2l1.1-1.23a.5.5%200%200%200%20.13-.33V9.5a7%207%200%200%201%204.7-6.61ZM9.18%2019.84A.16.16%200%200%200%209%2020a3%203%200%201%200%206%200c0-.1-.09-.17-.18-.16a24.86%2024.86%200%200%201-5.64%200Z%22%20class%3D%22%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E");
+        }
+    }
+}
+
+/* Better Bot Forms */
+form>div.focusLock__49fc1>div.rootWithShadow__49fc1 {
+    width: var(--modal-width-medium);
+
+    .header__49fc1 {
+        padding: var(--modal-vertical-padding) var(--modal-horizontal-padding);
+        margin-bottom: var(--modal-vertical-padding);
+        border-bottom: var(--border-normal) solid 1px;
+
+        .colorHeaderPrimary_c9946a {
+            text-align: center;
+            font-weight: var(--font-weight-semibold);
+            flex-grow: 1;
+        }
+
+        .closeButton_e858dd {
+            top: unset;
+            right: var(--modal-horizontal-padding);
+            margin-bottom: auto;
+            margin-top: auto;
+
+            .contents__201d5 {
+                height: 24px;
+            }
+        }
+    }
+
+    .submissionWarning_e858dd {
+        display: none;
+    }
+
+    .formItem__1b11b .eyebrow_b717a1 {
+        margin-bottom: 4px;
+
+        .errorMessage_b717a1 {
+            color: var(--text-danger);
+        }
+    }
+
+    .input__0f084.error__0f084:focus {
+        color: var(--text-normal);
+        transition-property: border-color, color;
+    }
+
+    .footer__49fc1 {
+        justify-content: space-between;
+    }
+}
+
+/* Text Box Redesign */
+[class^="channelTextArea_"] [class^="inner_"] {
+    flex-direction: column;
+    position: relative;
+}
+
+[class^="channelTextArea_"] [class^="inner_"] [class^="separator_"] {
+    margin-left: auto;
+}
+
+[class^="attachWrapper_"] {
+    position: absolute;
+    left: 19px;
+    bottom: 39px;
+    z-index: 1;
+}
+
+/* Make room for the attachment button */
+[class^="textArea_"] {
+    margin-bottom: -7.4px;
+    margin-right: 10;
+}
+
+.slateTextArea_ec4baf {
+    margin-left: 30px !important;
+}
+
+
+/* Adjust buttons position */
+[class^="buttons_"] {
+    position: relative;
+    z-index: 1;
+}
+
+/*     Modernized audio attachments      */
+[class^="mosaicItem"]>[class^="wrapperAudio"]>[class^="audioMetadata"] {
+    margin-bottom: 24px;
+}
+
+[class^="mosaicItem"]>[class^="wrapperAudio"]>[class^="audioControls"] {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    border-radius: 0px 0px 8px 8px;
+}
+
+/* create a list of dark role colors here */
+[style^="color: rgb(5, 0, 5);"]
+
+/* color chan black */
+    {
+    [class*=username_]& {
+        [id^=chat-messages]:hover &,
+        /* chat messages */
+        [class^=member_]:hover &,
+        /* members list */
+        [class^=membersGroup_]:hover &
+
+        /* members list headers (RoleColorEverywhere plugin) */
+            {
+            color: var(--text-normal) !important;
+        }
+    }
+
+    .mention&:hover
+    /* mentions */
+    ,
+    [class^=channelTextArea_] [class^=wrapper_]&:hover
+
+    /* mentions in chat bar */
+        {
+        color: var(--text-normal) !important;
+        background-color: color-mix(in srgb, var(--text-normal) 20%, transparent) !important;
+    }
+}
+
+
+
+/* visual refresh fixes */
+/* re-edging the corner padding to match pre-refresh */
+
+
+
+/* ========== Media Optimizations ========== */
+/* WebM and Media Fixes - Performance Enhanced */
+[class*="inlineMediaEmbed"],
+[class*="imageWrapper"],
+[class*="wrapperPaused"] {
+    contain: content;
+    max-height: max-content !important;
+    max-width: max-content !important;
+}
+
+[class*="loadingOverlay"] {
+    aspect-ratio: unset !important;
+}
+
+[class*="oneByOneGrid"] {
+    max-height: max-content !important;
+}
+
+/* ========== Responsive Design ========== */
+@media (max-width: 1100px) {
+    [class*="sidebar_"] {
+        width: 200px;
+
+        .vc-typing-indicator,
+        .vc-channelemojis-emoji,
+        [class*="guildIconV2Container_"] {
+            display: none;
+        }
+
+        [class*="containerDefault_"] {
+            [role="img"] {
+                display: none;
+            }
+        }
+    }
+
+    [class*="chat_"] {
+        [class*="membersWrap_"] {
+            display: none;
+        }
+    }
+}
+
+/* ========== Visual Refresh Fixes ========== */
+.visual-refresh [class^=appAsidePanelWrapper] {
+    padding: 1px;
+}
+
+.visual-refresh [class^=panels_] {
+    bottom: 4px;
+    left: 78px;
+    width: calc(100% - 78px);
+}
+
+.visual-refresh [class^=wrapper_],
+.visual-refresh .container_ee69e0 {
+    padding-bottom: unset;
+    --custom-app-panels-height: -8px
+}
+
+/* ========== Load Time Optimization ========== */
+/* Add content-visibility to improve rendering performance */
+.member-48YF_l,
+.message-2qnXI6,
+.containerDefault__3187b {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 45px;
+}
+
+/* Optimize animations using GPU acceleration */
+.animatedContainer-1NSq4T,
+.folder-1hbNCn,
+.wrapper-1BJsBx {
+    transform: translateZ(0);
+    will-change: transform, opacity;
+}
+
+
+.role_dfa8b6.pill_dfa8b6 {
+    position: relative;
+    background: none;
+    border: none;
+    padding-left: 28px;
+}
+
+.role_dfa8b6.pill_dfa8b6>span {
+    z-index: 1;
+}
+
+.role_dfa8b6.pill_dfa8b6 .roleRemoveButton_dfa8b6 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    margin: 0 !important;
+}
+
+.role_dfa8b6.pill_dfa8b6 .roleCircle__4f569 {
+    margin: 6px 8px;
+}
+
+.role_dfa8b6.pill_dfa8b6 .roleCircle__4f569::before {
+    content: '';
+    display: block;
+    position: absolute;
+    background-color: inherit;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    border-radius: var(--radius-xs);
+    filter: brightness(1.1);
+    opacity: 0.25;
+}
+
+[id^=message-accessories]+[class^=buttonContainer]>[class^=buttons] {
+    top: -27px !important;
+}
+
+section[class^="panels_"]>div[class^="mask_"] {
+    display: none;
+}

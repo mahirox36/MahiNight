@@ -42,7 +42,10 @@ You can customize various aspects of the theme by editing the CSS variables at t
 or by the URL
 
 - `https://mahirox36.github.io/MahiNight/build/MahiNight.css` - Default Theme everything included
-- `https://mahirox36.github.io/MahiNight/build/MahiNight-nonTextRedesign.css` - Default Theme everything included but no text redesign
+- `https://mahirox36.github.io/MahiNight/build/MahiNight-nonTR.css` - Default Theme everything included but no text redesign
+- `https://mahirox36.github.io/MahiNight/build/MahiNight-nonGML.css` - Default Theme, no text redesign and no gradient member list
+- `https://mahirox36.github.io/MahiNight/build/MahiNight-nonTR-nonGML.css` - Default Theme, no text redesign and no gradient member list
+- `https://mahirox36.github.io/MahiNight/build/MahiNight-Full.css` - Default Theme everything included, with a addition easter egg
 - more to come...
 
 ## Credits
